@@ -22,11 +22,43 @@ public class DiscounterController {
         try {
             Customer customer = _customerDao.getCustomer(customerId);
             boolean discount = _discounterDao.checkDiscount(customer);
-            return "" + discount;
+
+            if(discount){
+                return "Discount Granted.";
+            }else{
+                return "Discount Denied.";
+            }
         } catch (Exception ex) {
             return ex.getMessage();
         }
 
     }
 
+    @RequestMapping(value = "/grant")
+    @ResponseBody
+    public String grantDiscount(int customerId){
+        // Placeholder Service
+
+        try{
+            Customer customer = _customerDao.getCustomer(customerId);
+        }catch (Exception ex){
+            return ex.getMessage();
+        }
+
+        return "Discount Granted.";
+    }
+
+    @RequestMapping(value = "/deny")
+    @ResponseBody
+    public String denyDiscount(int customerId){
+        // Placeholder Service
+
+        try{
+            Customer customer = _customerDao.getCustomer(customerId);
+        }catch (Exception ex){
+            return ex.getMessage();
+        }
+
+        return "Discount Denied.";
+    }
 }

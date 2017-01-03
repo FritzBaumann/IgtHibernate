@@ -33,6 +33,7 @@ public class CustomerController {
         return "Customer succesfully added!";
     }
 
+    // Task "Get customer data from database"
     @RequestMapping(value = "/get")
     @ResponseBody
     public String getCustomer(int customerId){
@@ -48,6 +49,40 @@ public class CustomerController {
 
     }
 
+    // Task "Get data of all customers from database
+    @RequestMapping(value = "/getAll")
+    @ResponseBody
+    public String getAllCustomers(){
+
+        String result = "";
+
+        try {
+            result = _discounterDao.getCustomers();
+        } catch(Exception ex) {
+            return ex.getMessage();
+        }
+        return result;
+
+    }
+
+    // Task "Get data of all customers from database
+    @RequestMapping(value = "/getPeerGroup")
+    @ResponseBody
+    public String getPeerGroup(int customerId){
+
+        String result = "";
+
+        try {
+            Customer customer = _customerDao.getCustomer(customerId);
+            result = _discounterDao.getPeerGroup(customer);
+        } catch(Exception ex) {
+            return ex.getMessage();
+        }
+        return result;
+
+    }
+
+    // Task "Calculate customer sales"
     @RequestMapping(value = "/sales")
     @ResponseBody
     public String getSales(int customerId){
@@ -56,6 +91,36 @@ public class CustomerController {
         try {
             double sales = customer.getSales();
             return "Customer sales: "+ String.valueOf(sales);
+        }catch (Exception ex){
+            return ex.getMessage();
+        }
+    }
+
+    // Task "Calculate aggregated sales of all customers"
+    @RequestMapping(value = "/aggregratedSales")
+    @ResponseBody
+    public String getAggregatedSales(){
+
+        double sales = 0;
+        try {
+            double allSales = _discounterDao.aggregatedSales();
+            return "Aggregated sales: "+ String.valueOf(allSales);
+        }catch (Exception ex){
+            return ex.getMessage();
+        }
+    }
+
+    // Task "Calculate aggregated sales of peerGroup"
+    @RequestMapping(value = "/aggregratedPeerGroupSales")
+    @ResponseBody
+    public String getAggregatedPeerGroupSales(int customerId){
+
+        double sales = 0;
+
+        try {
+            Customer customer = (Customer) _customerDao.getCustomer(customerId);
+            double peerGroupSales = _discounterDao.peerGroupSales(customer);
+            return "Aggregated PeerGroup sales: "+ String.valueOf(peerGroupSales);
         }catch (Exception ex){
             return ex.getMessage();
         }

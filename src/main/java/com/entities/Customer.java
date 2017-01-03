@@ -33,7 +33,7 @@ public class Customer implements Serializable {
                 "customerId=" + customerId +
                 ", lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", adress='" + adress + '\'' +
+                ", address='" + adress + '\'' +
                 ", birthDate=" + birthDate +
                 '}';
     }
