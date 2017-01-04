@@ -24,9 +24,9 @@ public class DiscounterController {
             boolean discount = _discounterDao.checkDiscount(customer);
 
             if(discount){
-                return "Discount Granted.";
+                return "Customer qualifies for Discount.";
             }else{
-                return "Discount Denied.";
+                return "Customer does not qualify for Discount.";
             }
         } catch (Exception ex) {
             return ex.getMessage();
