@@ -65,7 +65,7 @@ public class DiscounterDao {
         String customersList = "";
 
         for(Object u : customers){
-            customersList += "FirstName: "+((Customer) u).getFirstName()+" LastName: "+((Customer) u).getLastName()+" BirthDate: "+((Customer) u).getBirthDate()+" Address: "+((Customer) u).getAdress()+" <br>";
+            customersList += "FirstName: "+((Customer) u).getFirstName()+"   LastName: "+((Customer) u).getLastName()+"   BirthDate: "+((Customer) u).getBirthDate()+"   Address: "+((Customer) u).getAdress()+" <br>";
         }
         return customersList;
     }
@@ -78,7 +78,7 @@ public class DiscounterDao {
 
         for(Object u : customers){
             if(((Customer) u).getBirthDate().getYear() -5 < ((Customer) customer).getBirthDate().getYear() && customer.getBirthDate().getYear() + 5 > ((Customer) customer).getBirthDate().getYear() ){
-                peerGroupList += "FirstName: "+((Customer) u).getFirstName()+" LastName: "+((Customer) u).getLastName()+" BirthDate: "+((Customer) u).getBirthDate()+" Address: "+((Customer) u).getAdress()+" <br>";
+                peerGroupList += "FirstName: "+((Customer) u).getFirstName()+"   LastName: "+((Customer) u).getLastName()+"   BirthDate: "+((Customer) u).getBirthDate()+"   Address: "+((Customer) u).getAdress()+" <br>";
             }
         }
 

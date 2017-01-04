@@ -19,6 +19,7 @@ public class CustomerController {
     @Autowired
     private DiscounterDao _discounterDao;
 
+    // Add Customer to Database Service
     @RequestMapping(value = "/add")
     @ResponseBody
     public String create(String lastName, String firstName, Date birthDate, String adress) {
@@ -33,7 +34,7 @@ public class CustomerController {
         return "Customer succesfully added!";
     }
 
-    // Task "Get customer data from database"
+    // Primary impl. for Task "Get customer data from database"
     @RequestMapping(value = "/get")
     @ResponseBody
     public String getCustomer(int customerId){
@@ -41,7 +42,7 @@ public class CustomerController {
         Customer customer = _customerDao.getCustomer(customerId);
         try {
 
-            return "Firstname: "+customer.getFirstName()+" Lastname: "+customer.getLastName()+" Birthdate: "+customer.getBirthDate()+" Adress: "+customer.getAdress();
+            return "Firstname: "+customer.getFirstName()+"   Lastname: "+customer.getLastName()+"   Birthdate: "+customer.getBirthDate()+"   Adress: "+customer.getAdress();
 
         }catch (Exception ex) {
             return ex.getMessage();
@@ -49,7 +50,7 @@ public class CustomerController {
 
     }
 
-    // Task "Get data of all customers from database
+    // Primary impl. for Task "Get data of all customers from database
     @RequestMapping(value = "/getAll")
     @ResponseBody
     public String getAllCustomers(){
@@ -65,7 +66,7 @@ public class CustomerController {
 
     }
 
-    // Task "Get data of all customers from database
+    // Primary impl. for Task "Get data of all customers from database
     @RequestMapping(value = "/getPeerGroup")
     @ResponseBody
     public String getPeerGroup(int customerId){
@@ -82,7 +83,7 @@ public class CustomerController {
 
     }
 
-    // Task "Calculate customer sales"
+    //Primary impl. for Task "Calculate customer sales"
     @RequestMapping(value = "/sales")
     @ResponseBody
     public String getSales(int customerId){
@@ -96,7 +97,23 @@ public class CustomerController {
         }
     }
 
-    // Task "Calculate aggregated sales of all customers"
+    // 2nd Impl. for Task "Calculate customer sales"
+    @RequestMapping(value = "/businessVolume")
+    @ResponseBody
+    public String getBusinessVolume(int customerId){
+
+        Customer customer = _customerDao.getCustomer(customerId);
+        try {
+            double businessVolume = customer.getSales();
+            String customerName = "";
+            customerName += customer.getFirstName()+ " "+customer.getLastName();
+            return "Business Volume of Customer : "+customerName+" is "+ String.valueOf(businessVolume)+ " Euro.";
+        }catch (Exception ex){
+            return ex.getMessage();
+        }
+    }
+
+    //Primary impl. for Task "Calculate aggregated sales of all customers"
     @RequestMapping(value = "/aggregratedSales")
     @ResponseBody
     public String getAggregatedSales(){
@@ -110,7 +127,7 @@ public class CustomerController {
         }
     }
 
-    // Task "Calculate aggregated sales of peerGroup"
+    //Primary impl. for Task "Calculate aggregated sales of peerGroup"
     @RequestMapping(value = "/aggregratedPeerGroupSales")
     @ResponseBody
     public String getAggregatedPeerGroupSales(int customerId){
