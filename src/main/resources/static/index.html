@@ -11,23 +11,67 @@
 </header>
 
 <!-- Quick and Dirty Access to Services -->
+<section id="customer_services">
+    <h1> Customer Services</h1><br>
+    <details>
+        <summary>Primary Customer Services</summary>
+        <br>
+        Add Customer: <a href="http://localhost:8080/customer/add?lastName=Muster&firstName=Max&birthDate=1990-01-01&adress=MusterAdresse">http://localhost:8080/customer/add?lastName=Muster&firstName=Max&birthDate=1990-01-01&adress=MusterAdresse</a><br>
+        Get Customer: <a href="http://localhost:8080/customer/get?customerId=1">http://localhost:8080/customer/get?customerId=1</a><br>
+        Get All Customers: <a href="http://localhost:8080/customer/getAll">http://localhost:8080/customer/getAll</a><br>
+        Get PeerGroup: <a href="http://localhost:8080/customer/getPeerGroup?customerId=1">http://localhost:8080/customer/getPeerGroup?customerId=1</a><br>
+        Calculate Customer Sales: <a href="http://localhost:8080/customer/sales?customerId=1">http://localhost:8080/customer/sales?customerId=1</a><br>
+        Get Aggregrated Sales of all Customers: <a href="http://localhost:8080/customer/aggregratedSales">http://localhost:8080/customer/aggregratedSales</a><br>
+        Get Aggregated PeerGroup Sales: <a href="http://localhost:8080/customer/aggregratedPeerGroupSales?customerId=1">http://localhost:8080/customer/aggregratedPeerGroupSales?customerId=1</a><br>
 
-<h1> Customer</h1><br>
-Add Customer: <a href="http://localhost:8080/customer/add?lastName=Muster&firstName=Max&birthDate=1990-01-01&adress=MusterAdresse">http://localhost:8080/customer/add?lastName=Muster&firstName=Max&birthDate=1990-01-01&adress=MusterAdresse</a><br>
-Get Customer: <a href="http://localhost:8080/customer/get?customerId=1">http://localhost:8080/customer/get?customerId=1</a><br>
-Get All Customers: <a href="http://localhost:8080/customer/getAll">http://localhost:8080/customer/getAll</a><br>
-Get PeerGroup: <a href="http://localhost:8080/customer/getPeerGroup?customerId=1">http://localhost:8080/customer/getPeerGroup?customerId=1</a><br>
-Get Customer Sales: <a href="http://localhost:8080/customer/sales?customerId=1">http://localhost:8080/customer/sales?customerId=1</a><br>
-Get Aggregrated Sales of all Customers: <a href="http://localhost:8080/customer/aggregratedSales">http://localhost:8080/customer/aggregratedSales</a><br>
-Get Aggregated PeerGroup Sales: <a href="http://localhost:8080/customer/aggregratedPeerGroupSales?customerId=1">http://localhost:8080/customer/aggregratedPeerGroupSales?customerId=1</a><br>
+    </details>
+<br>
+    <details>
+        <summary>Secondary Customer Services</summary>
+        <br>
+        Get CustomerData: <a href="http://localhost:8080/customer/getData?customerId=1">http://localhost:8080/customer/getData?customerId=1</a><br>
+        Get Customer by Name: <a href="http://localhost:8080/customer/getByName?lastName=Muster&firstName=Max">http://localhost:8080/customer/getByName?lastName=Muster&firstName=Max</a><br>
+        Calculcate BusinessVolume of Customer: <a href="http://localhost:8080/customer/businessVolume?customerId=1">http://localhost:8080/customer/businessVolume?customerId=1</a><br>
+        Calculcate SalesByName for Customer: <a href="http://localhost:8080/customer/salesByName?lastName=Muster&firstName=Max">http://localhost:8080/customer/salesByName?lastName=Muster&firstName=Max</a><br>
 
-<h1> Appointments</h1><br>
-Add Appointment: <a href="http://localhost:8080/appointment/add?customerId=1&value=123.2">http://localhost:8080/appointment/add?customerId=1&value=123.2</a><br>
+    </details>
 
-<h1> Discount </h1><br>
-Calculate Discount: <a href="http://localhost:8080/discount/calculate?customerId=1">http://localhost:8080/discount/calculate?customerId=1</a><br>
-Grant Discount: <a href="http://localhost:8080/discount/grant?customerId=1">http://localhost:8080/discount/grant?customerId=1</a><br>
-Deny Discount: <a href="http://localhost:8080/discount/deny?customerId=1">http://localhost:8080/discount/deny?customerId=1</a><br>
+</section>
+<br>
+<section id="appointment_services">
+    <h1> Appointment Services</h1><br>
+    <details>
+        <summary>Primary Appointment Services</summary>
+        <br>
+        Add Appointment: <a href="http://localhost:8080/appointment/add?customerId=1&value=123.2">http://localhost:8080/appointment/add?customerId=1&value=123.2</a><br>
+
+    </details>
+    <br>
+    <details>
+        <summary>Secondary Appointments Services</summary>
+        <br>
+    </details>
+
+</section>
+<br>
+<section id="discount_services">
+    <h1> Discount </h1><br>
+    <details>
+        <summary>Primary Discount Services</summary>
+        <br>
+        Calculate Discount: <a href="http://localhost:8080/discount/calculate?customerId=1">http://localhost:8080/discount/calculate?customerId=1</a><br>
+        Grant Discount: <a href="http://localhost:8080/discount/grant?customerId=1">http://localhost:8080/discount/grant?customerId=1</a><br>
+        Deny Discount: <a href="http://localhost:8080/discount/deny?customerId=1">http://localhost:8080/discount/deny?customerId=1</a><br>
+
+    </details>
+    <br>
+    <details>
+        <summary>Secondary Discount Services</summary>
+        <br>
+    </details>
+
+</section>
+
 
 <br><br>
 

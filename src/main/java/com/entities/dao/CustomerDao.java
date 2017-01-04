@@ -26,17 +26,30 @@ public class CustomerDao {
     public void save(Customer customer) {
         getSession().save(customer);
     }
+
     public void update(Customer customer) {
         getSession().update(customer);
     }
+
     @SuppressWarnings("unchecked")
-    public Customer getCustomer(int id){
+    public Customer getCustomer(int id) {
         String hql = "from Customer where customerId like :id";
-        Session session= getSession();
+        Session session = getSession();
         Query query = session.createQuery(hql);
-        query.setInteger("id",id);
+        query.setInteger("id", id);
         List results = query.list();
-        return (Customer)results.get(0);
+        return (Customer) results.get(0);
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Customer> getCustomerByName(String lastName, String firstName){
+        String hql = "from Customer where lastName like :lastName and firstName like :firstName";
+        Session session = getSession();
+        Query query = session.createQuery(hql);
+        query.setString("firstName", firstName);
+        query.setString("lastName", lastName);
+
+        return (List<Customer>) query.list();
     }
 
 }
