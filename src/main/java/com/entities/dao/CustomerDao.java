@@ -4,6 +4,7 @@ import javax.transaction.Transactional;
 
 import com.entities.Customer;
 import com.entities.Discounter;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -50,6 +51,44 @@ public class CustomerDao {
         query.setString("lastName", lastName);
 
         return (List<Customer>) query.list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Customer> getAllCustomerObjects() {
+        String hql = "from Customer";
+        Session session = getSession();
+        Query query = session.createQuery(hql);
+
+        return (List<Customer>) query.list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public String getCustomers(){
+        Session session = getSession();
+        Criteria crit = session.createCriteria(Customer.class);
+        List customers = crit.list();
+        String customersList = "";
+
+        for(Object u : customers){
+            customersList += "FirstName: "+((Customer) u).getFirstName()+"   LastName: "+((Customer) u).getLastName()+"   BirthDate: "+((Customer) u).getBirthDate()+"   Address: "+((Customer) u).getAdress()+" <br>";
+        }
+        return customersList;
+    }
+
+    @SuppressWarnings("unchecked")
+    public String getPeerGroup(Customer customer){
+        Session session = getSession();
+        Criteria crit = session.createCriteria(Customer.class);
+        List customers = crit.list();
+        String peerGroupList = "";
+
+        for(Object u : customers){
+            if(((Customer) u).getBirthDate().getYear() -5 < ((Customer) customer).getBirthDate().getYear() && customer.getBirthDate().getYear() + 5 > ((Customer) customer).getBirthDate().getYear() ){
+                peerGroupList += "FirstName: "+((Customer) u).getFirstName()+"   LastName: "+((Customer) u).getLastName()+"   BirthDate: "+((Customer) u).getBirthDate()+"   Address: "+((Customer) u).getAdress()+" <br>";
+            }
+        }
+
+        return peerGroupList;
     }
 
 }

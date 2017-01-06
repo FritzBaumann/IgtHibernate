@@ -58,31 +58,40 @@ public class DiscounterDao {
         }
     }
 
-    public String getCustomers(){
+
+    public String checkDiscountDetailed(Customer customer) {
         Session session = getSession();
         Criteria crit = session.createCriteria(Customer.class);
-        List customers = crit.list();
-        String customersList = "";
-
-        for(Object u : customers){
-            customersList += "FirstName: "+((Customer) u).getFirstName()+"   LastName: "+((Customer) u).getLastName()+"   BirthDate: "+((Customer) u).getBirthDate()+"   Address: "+((Customer) u).getAdress()+" <br>";
+        List costumers = crit.list();
+        double allSales = 0;
+        String result = "";
+        for (Object u : costumers) {
+            allSales = allSales + ((Customer) u).getSales();
         }
-        return customersList;
-    }
+        if (customer.getSales() > (allSales * 0.10)) {
+            double percentage = (customer.getSales() / allSales)*100;
+            percentage = (double)Math.round(percentage * 100d) / 100d;
+            return result = customer.getFirstName()+" "+customer.getLastName()+" Sales: "+customer.getSales()+".   Aggregated Sales: "+allSales+". <br>   "+percentage+"% -> Customer qualifies for Discount.";
+        } else {
+            System.out.print(customer.getSales());
 
-    public String getPeerGroup(Customer customer){
-        Session session = getSession();
-        Criteria crit = session.createCriteria(Customer.class);
-        List customers = crit.list();
-        String peerGroupList = "";
+            double allSalesForPeer = 0;
+            for (Object costumersToWork : costumers) {
 
-        for(Object u : customers){
-            if(((Customer) u).getBirthDate().getYear() -5 < ((Customer) customer).getBirthDate().getYear() && customer.getBirthDate().getYear() + 5 > ((Customer) customer).getBirthDate().getYear() ){
-                peerGroupList += "FirstName: "+((Customer) u).getFirstName()+"   LastName: "+((Customer) u).getLastName()+"   BirthDate: "+((Customer) u).getBirthDate()+"   Address: "+((Customer) u).getAdress()+" <br>";
+                if (customer.getBirthDate().getYear() - 5 < ((Customer) costumersToWork).getBirthDate().getYear()
+                        && customer.getBirthDate().getYear() + 5 > ((Customer) costumersToWork).getBirthDate().getYear()) {
+                    allSalesForPeer = allSalesForPeer + ((Customer) costumersToWork).getSales();
+                }
             }
+            if (customer.getSales() > (allSalesForPeer * 0.20)) {
+                double percentage = (customer.getSales() / allSalesForPeer)*100;
+                percentage = (double)Math.round(percentage * 100d) / 100d;
+                return result = customer.getFirstName()+" "+customer.getLastName()+" Sales: "+customer.getSales()+".   Aggregated Sales: "+allSales+".  <br>  "+percentage+"% -> Customer qualifies for Discount.";
+            }
+            double percentage = (customer.getSales() / allSalesForPeer)*100;
+            percentage = (double)Math.round(percentage * 100d) / 100d;
+            return result = customer.getFirstName()+" "+customer.getLastName()+" Sales: "+customer.getSales()+".   Aggregated Sales: "+allSales+". <br>   "+percentage+"%  -> Customer does not qualify for Discount.";
         }
-
-        return peerGroupList;
     }
 
     public double aggregatedSales(){

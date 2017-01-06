@@ -34,6 +34,19 @@ public class DiscounterController {
 
     }
 
+    @RequestMapping(value = "/calculateInDetail")
+    @ResponseBody
+    public String calculateDetail(int customerId) {
+        try {
+            Customer customer = _customerDao.getCustomer(customerId);
+            return _discounterDao.checkDiscountDetailed(customer);
+
+        } catch (Exception ex) {
+            return ex.getMessage();
+        }
+
+    }
+
     @RequestMapping(value = "/grant")
     @ResponseBody
     public String grantDiscount(int customerId){
