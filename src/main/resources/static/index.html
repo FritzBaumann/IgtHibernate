@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IGT - BPMN WS</title>
+</head>
+<body>
+<header>
+    <h1> IGT WS16 </h1>
+    <h3></h3>
+</header>
+
+<!-- Quick and Dirty Access to Services -->
+<section id="customer_services">
+
+    <h1>Customer Services</h1><br>
+
+    <details>
+        <summary>Task: Add Customer</summary>
+        <br>
+        Add Customer: <a href="http://localhost:8080/customer/add?lastName=Muster&firstName=Max&birthDate=1990-01-01&adress=MusterAdresse">http://localhost:8080/customer/add?lastName=Muster&firstName=Max&birthDate=1990-01-01&adress=MusterAdresse</a><br>
+    </details>
+    <br>
+
+    <details>
+        <summary>Task: Get Customer Data</summary>
+        <br>
+        Get Customer: <a href="http://localhost:8080/customer/get?customerId=1">http://localhost:8080/customer/get?customerId=1</a><br>
+        Get CustomerData: <a href="http://localhost:8080/customer/getData?customerId=1">http://localhost:8080/customer/getData?customerId=1</a><br>
+        Get Customer by Name: <a href="http://localhost:8080/customer/getByName?lastName=Muster&firstName=Max">http://localhost:8080/customer/getByName?lastName=Muster&firstName=Max</a><br>
+    </details>
+    <br>
+
+    <details>
+        <summary>Task: Get Data of all Customers</summary>
+        <br>
+        Get All Customers: <a href="http://localhost:8080/customer/getAll">http://localhost:8080/customer/getAll</a><br>
+        Get Everyone: <a href="http://localhost:8080/customer/getEveryone">http://localhost:8080/customer/getEveryone</a><br>
+        Get Table of all Customers: <a href="http://localhost:8080/customer/getTableOfAllCustomers">http://localhost:8080/customer/getTableOfAllCustomers</a><br>
+    </details>
+    <br>
+
+    <details>
+        <summary>Task: Get Data of Customers Peergroup</summary>
+        <br>
+        Get PeerGroup: <a href="http://localhost:8080/customer/getPeerGroup?customerId=1">http://localhost:8080/customer/getPeerGroup?customerId=1</a><br>
+        Get Customers PeerGroup: <a href="http://localhost:8080/customer/PeerGroup?customerId=1">http://localhost:8080/customer/PeerGroup?customerId=1</a><br>
+        Get Table of Peergroup: <a href="http://localhost:8080/customer/PeerGroupTable?customerId=1">http://localhost:8080/customer/PeerGroupTable?customerId=1</a><br>
+    </details>
+    <br>
+
+    <details>
+        <summary>Task: Calculate Customer Sales:</summary>
+        <br>
+        Calculate Customer Sales: <a href="http://localhost:8080/customer/sales?customerId=1">http://localhost:8080/customer/sales?customerId=1</a><br>
+        Calculcate BusinessVolume of Customer: <a href="http://localhost:8080/customer/businessVolume?customerId=1">http://localhost:8080/customer/businessVolume?customerId=1</a><br>
+        Calculcate SalesByName for Customer: <a
+            href="http://localhost:8080/customer/salesByName?lastName=Muster&firstName=Max">http://localhost:8080/customer/salesByName?lastName=Muster&firstName=Max</a><br>
+    </details>
+    <br>
+
+    <details>
+        <summary>Task: Calculate Aggregated Sales of all Customers:</summary>
+        <br>
+        Get Aggregrated Sales of all Customers: <a href="http://localhost:8080/customer/aggregratedSales">http://localhost:8080/customer/aggregratedSales</a><br>
+        Get SalesTotal of all Customers: <a href="http://localhost:8080/customer/allCustomersSalestotal">http://localhost:8080/customer/allCustomersSalestotal</a><br>
+        Get all Sales: <a href="http://localhost:8080/customer/allSales">http://localhost:8080/customer/allSales</a><br>
+    </details>
+    <br>
+
+    <details>
+        <summary>Task: Calculate Aggregated Peergroup Sales:</summary>
+        <br>
+        Get Aggregated PeerGroup Sales: <a href="http://localhost:8080/customer/aggregratedPeerGroupSales?customerId=1">http://localhost:8080/customer/aggregratedPeerGroupSales?customerId=1</a><br>
+        Get Aggregated PeerGroup Sales in Total: <a href="http://localhost:8080/customer/PeerGroupSalestotal?customerId=1">http://localhost:8080/customer/PeerGroupSalestotal?customerId=1</a><br>
+        Get Peer Sales: <a href="http://localhost:8080/customer//PeerSales?customerId=1">http://localhost:8080/customer//PeerSales?customerId=1</a><br>
+    </details>
+    <br>
+
+</section>
+<br>
+
+<section id="appointment_services">
+
+    <h1> Appointment Services</h1><br>
+
+    <details>
+        <summary>Task: Add Appointment</summary>
+        <br>
+        Add Appointment: <a href="http://localhost:8080/appointment/add?customerId=1&value=123.2">http://localhost:8080/appointment/add?customerId=1&value=123.2</a><br>
+    </details>
+    <br>
+
+</section>
+<br>
+
+<section id="discount_services">
+
+    <h1> Discount Services </h1><br>
+    <details>
+        <summary>Task: Calculate if Customer qualifies for Discount</summary>
+        <br>
+        Calculate Discount: <a href="http://localhost:8080/discount/calculate?customerId=1">http://localhost:8080/discount/calculate?customerId=1</a><br>
+        Calculate Discount in Detail: <a href="http://localhost:8080/discount/calculateInDetail?customerId=1">http://localhost:8080/discount/calculateInDetail?customerId=1</a><br>
+    </details>
+    <br>
+
+    <details>
+        <summary>Task: Grant Discount</summary>
+        <br>
+        Grant Discount: <a href="http://localhost:8080/discount/grant?customerId=1">http://localhost:8080/discount/grant?customerId=1</a><br>
+    </details>
+    <br>
+
+    <details>
+        <summary>Task: Deny Discount</summary>
+        <br>
+        Deny Discount: <a href="http://localhost:8080/discount/deny?customerId=1">http://localhost:8080/discount/deny?customerId=1</a><br>
+    </details>
+    <br>
+</section>
+
+<br><br>
+<a href="http://localhost:8080/customer/dummyData">Add Dummy Data</a>
+<br><br>
+
+<a href="bpmn_js_viewer.html">Bpmn-js</a> <br>
+
+<br><br>
+</body>
+</html>
