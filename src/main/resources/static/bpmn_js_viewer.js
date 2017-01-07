@@ -28,19 +28,26 @@ xhr.onreadystatechange = function() {
 xhr.open('GET', 'IGT Order-Process Discount.bpmn', true);
 xhr.send(null);
 
-/*
-// Parsing Part
-var elementRegistry = viewer.get('elementRegistry');
-elementRegistry.forEach(function(elem, gfx) {
-    if (elem.businessObject.$instanceOf('bpmn:Task')){
-        // do something with the task
-        var taskType = elem.businessObject.$type;
 
-        // and access to properties declared in the descriptor with
-        var taskName = elem.businessObject.get('name');
-        document.getElementById("taskNameField").innerHTML = taskName;
 
-        // and to properties not declared in the descriptor with
-        var taskAttrs = elem.businessObject.$attrs;
-    }
-});*/
+function analyze() {
+    // Parsing Part 
+    var elementRegistry = viewer.get('elementRegistry');
+    elementRegistry.forEach(function(elem, gfx) {
+        if (elem.businessObject.$instanceOf('bpmn:Task')){
+            // do something with the task
+            var taskType = elem.businessObject.$type;
+
+            // and access to properties declared in the descriptor with
+            var taskName = elem.businessObject.get('name');
+           // document.write(taskName);
+            document.getElementById("taskNameField").innerHTML = taskName;
+            //console.log(taskname);
+           // window.alert(taskName);
+
+
+            // and to properties not declared in the descriptor with
+            var taskAttrs = elem.businessObject.$attrs;
+        }
+    });
+}
