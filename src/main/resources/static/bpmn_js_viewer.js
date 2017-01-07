@@ -29,9 +29,12 @@ xhr.open('GET', 'IGT Order-Process Discount.bpmn', true);
 xhr.send(null);
 
 
-
+/* Returned values are strange atm, start in the middle? of the bpmn and returns several tasks again and again */
 function analyze() {
-    // Parsing Part 
+    var taskArray = [];
+    var taskName;
+
+    // Parsing Part
     var elementRegistry = viewer.get('elementRegistry');
     elementRegistry.forEach(function(elem, gfx) {
         if (elem.businessObject.$instanceOf('bpmn:Task')){
@@ -39,15 +42,17 @@ function analyze() {
             var taskType = elem.businessObject.$type;
 
             // and access to properties declared in the descriptor with
-            var taskName = elem.businessObject.get('name');
-           // document.write(taskName);
-            document.getElementById("taskNameField").innerHTML = taskName;
-            //console.log(taskname);
-           // window.alert(taskName);
-
+            taskName = elem.businessObject.get('name');
+            taskArray.push(taskName);
 
             // and to properties not declared in the descriptor with
             var taskAttrs = elem.businessObject.$attrs;
         }
     });
+
+
+    for(var i=0; i< taskArray.length; i++){
+        taskName += taskArray[0];
+    }
+     document.getElementById("taskNameField").innerHTML = taskName;
 }
