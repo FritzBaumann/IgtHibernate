@@ -28,6 +28,21 @@ xhr.onreadystatechange = function() {
 xhr.open('GET', 'IGT Order-Process Discount.bpmn', true);
 xhr.send(null);
 
+window.onload = function() {
+    hideSections();
+};
+
+function hideSections() {
+    $( "#GetCustomerData" ).hide();
+    $( "#GetAllCustomerData" ).hide();
+    $( "#GetPeergroupData" ).hide();
+    $( "#GetCustomerSales" ).hide();
+    $( "#GetAllCustomersSales" ).hide();
+    $( "#GetPeergroupSales" ).hide();
+    $( "#CalculateDiscountQualification" ).hide();
+    $( "#GrantDiscount" ).hide();
+    $( "#DenyDiscount" ).hide();
+}
 
 /* Returned values are strange atm, start in the middle? of the bpmn and returns several tasks again and again */
 function analyze() {
@@ -45,8 +60,35 @@ function analyze() {
 
             // and access to properties declared in the descriptor with
             taskName = elem.businessObject.get('name');
-            taskArray.push(taskName);
+            taskArray.push(taskName+" ");
 
+            if(taskName.includes("Get customer data from database")){
+                $( "#GetCustomerData" ).show();
+            }
+            if(taskName.includes("Get data of all customers from database")){
+                $( "#GetAllCustomerData" ).show();
+            }
+            if(taskName.includes("Get data of peergroup from database")){
+                $( "#GetPeergroupData" ).show();
+            }
+            if(taskName.includes("Calculate customer sales")){
+                $( "#GetCustomerSales" ).show();
+            }
+            if(taskName.includes("Calculate aggregated sales of all customers")){
+                $( "#GetAllCustomersSales" ).show();
+            }
+            if(taskName.includes("Calculate aggregated sales of peergroup")){
+                $( "#GetPeergroupSales" ).show();
+            }
+            if(taskName.includes("Get data of peergroup from database")){
+                $( "#CalculateDiscountQualification" ).show();
+            }
+            if(taskName.includes("Grant discount")){
+                $( "#GrantDiscount" ).show();
+            }
+            if(taskName.includes("Deny discount")){
+                $( "#DenyDiscount" ).show();
+            }
             // and to properties not declared in the descriptor with
             taskAttrib = elem.businessObject.$attrs;
             attribArray.pop(taskAttrib);
