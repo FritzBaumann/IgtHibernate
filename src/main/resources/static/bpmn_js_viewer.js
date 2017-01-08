@@ -1,5 +1,9 @@
 'use strict';
 
+window.onload = function() {
+    hideSections();
+};
+
 // we use $.ajax to load the diagram.
 // make sure you run the application via web-server (ie. connect (node) or asdf (ruby))
 
@@ -28,9 +32,26 @@ xhr.onreadystatechange = function() {
 xhr.open('GET', 'IGT Order-Process Discount.bpmn', true);
 xhr.send(null);
 
-window.onload = function() {
-    hideSections();
-};
+
+
+function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    for (var i = 0, f; f = files[i]; i++) {
+        output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+            f.size, ' bytes, last modified: ',
+            f.lastModifiedDate.toLocaleDateString(), '</li>');
+    }
+    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+}
+
+document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+
+
+
 
 function hideSections() {
     $( "#GetCustomerData" ).hide();
@@ -95,10 +116,10 @@ function analyze() {
         }
     });
 
-
+/*// Print out Tasks
     for(var i=0; i< taskArray.length; i++){
         taskName += taskArray[i]+" ";
     }
-     document.getElementById("taskNameField").innerHTML = taskName;
+     document.getElementById("taskNameField").innerHTML = taskName;*/
 
 }
