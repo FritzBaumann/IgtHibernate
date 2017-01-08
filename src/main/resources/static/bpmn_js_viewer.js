@@ -11,7 +11,7 @@ window.onload = function() {
 // along with all its dependencies to the web site
 var BpmnViewer = window.BpmnJS;
 
-var viewer = new BpmnViewer({ container: '#canvas' });
+var viewer = new BpmnViewer({  container: $('#canvas'), height: 600  });
 
 var xhr = new XMLHttpRequest();
 
