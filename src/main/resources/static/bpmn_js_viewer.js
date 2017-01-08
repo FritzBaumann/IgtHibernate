@@ -32,7 +32,9 @@ xhr.send(null);
 /* Returned values are strange atm, start in the middle? of the bpmn and returns several tasks again and again */
 function analyze() {
     var taskArray = [];
+    var attribArray = [];
     var taskName;
+    var taskAttrib;
 
     // Parsing Part
     var elementRegistry = viewer.get('elementRegistry');
@@ -46,13 +48,15 @@ function analyze() {
             taskArray.push(taskName);
 
             // and to properties not declared in the descriptor with
-            var taskAttrs = elem.businessObject.$attrs;
+            taskAttrib = elem.businessObject.$attrs;
+            attribArray.pop(taskAttrib);
         }
     });
 
 
     for(var i=0; i< taskArray.length; i++){
-        taskName += taskArray[0];
+        taskName += taskArray[i]+" ";
     }
      document.getElementById("taskNameField").innerHTML = taskName;
+
 }
