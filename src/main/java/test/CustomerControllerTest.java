@@ -24,9 +24,9 @@ public class CustomerControllerTest {
     }
     @Test
     public void testIndex() throws Exception{
-        this.mockMvc.perform(get("/"))
+        this.mockMvc.perform(get("/customer/get?customerId=1"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("index"))
+                .andExpect(view().name("Firstname: Max Lastname: Mustermann Birthdate: 1970-01-01 Adress: Musterstraße"))
                 .andDo(print());
     }
 }

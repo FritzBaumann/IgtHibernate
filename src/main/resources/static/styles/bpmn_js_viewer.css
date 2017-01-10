@@ -2,3 +2,7 @@ body {
     height: 100%
 }
 
+.canvas {
+    height: 500px;
+    margin: 20px;
+}

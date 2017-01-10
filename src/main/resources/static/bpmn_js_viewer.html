@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="/styles/bpmn_js_viewer.css">
     <meta charset="UTF-8">
     <title> Bpmn-js Viewer </title>
 </head>
 <body>
 
 <h1> bpmn-js viewer</h1>
-
-<div id="canvas" style="height: 500px"></div>
+<!--style="height: 500px"-->
+<div id="canvas" ></div>
 
 <!-- viewer -->
 <script src="js/bpmn-js/dist/bpmn-viewer.js"></script>
@@ -17,13 +18,14 @@
 
 <script src="bpmn_js_viewer.js"></script>
 
-<input type="file" id="files" name="files[]" multiple />
+<input type="file" id="files" />
 <output id="list"></output>
 
 <br>
 <p id="taskNameField"></p>
 <br>
 <button id="analyzeButton" onclick="analyze()">Analyze</button>
+<button id="uploadbpmn" onclick="fileUpload()">Upload</button>
 
 <section class="hidden" id="GetCustomerData">
     <h4> Task: Get Customer Data from Database </h4>

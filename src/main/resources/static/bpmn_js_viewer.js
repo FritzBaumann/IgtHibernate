@@ -29,12 +29,11 @@ xhr.onreadystatechange = function() {
     }
 };
 
-xhr.open('GET', 'IGT Order-Process Discount.bpmn', true);
-xhr.send(null);
 
 
 
-function handleFileSelect(evt) {
+
+/*function handleFileSelect(evt) {
     var files = evt.target.files; // FileList object
 
     // files is a FileList of File objects. List some properties.
@@ -45,7 +44,7 @@ function handleFileSelect(evt) {
             f.lastModifiedDate.toLocaleDateString(), '</li>');
     }
     document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-}
+}*/
 
 document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
@@ -63,6 +62,24 @@ function hideSections() {
     $( "#CalculateDiscountQualification" ).hide();
     $( "#GrantDiscount" ).hide();
     $( "#DenyDiscount" ).hide();
+}
+
+
+function fileUpload(){
+    var x = document.getElementById("files");
+    var file = x.files[0];
+    xhr.open('GET', file.name, true);
+    xhr.send(null);
+
+    viewer.importXML(xhr.response, function(err) {
+
+        if (!err) {
+            console.log('success!');
+            viewer.get('canvas').zoom('fit-viewport');
+        } else {
+            console.log('something went wrong:', err);
+        }
+    });
 }
 
 /* Returned values are strange atm, start in the middle? of the bpmn and returns several tasks again and again */
