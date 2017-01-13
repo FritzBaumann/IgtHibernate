@@ -129,6 +129,33 @@ public class CustomerController {
     }
 
 
+    /* Diverging Services */
+
+    @RequestMapping( value = "/getCustomerName")
+    @ResponseBody
+    public String getCustomerName(int customerId){
+
+        Customer customer = _customerDao.getCustomer(customerId);
+        return "CustomerName: "+customer.getFirstName()+" "+customer.getLastName();
+    }
+
+    @RequestMapping( value = "/getCustomerBirthdate")
+    @ResponseBody
+    public String getCustomerBirthdate(int customerId){
+
+        Customer customer = _customerDao.getCustomer(customerId);
+        return "Customer Birthdate: "+customer.getBirthDate();
+    }
+
+    @RequestMapping( value = "/getCustomerAddress")
+    @ResponseBody
+    public String getCustomerAddress(int customerId){
+
+        Customer customer = _customerDao.getCustomer(customerId);
+        return "Customer Address: "+customer.getAdress();
+    }
+
+
     /* Secondary Service Implementations */
 
 

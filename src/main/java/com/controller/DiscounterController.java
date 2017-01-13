@@ -31,7 +31,6 @@ public class DiscounterController {
         } catch (Exception ex) {
             return ex.getMessage();
         }
-
     }
 
     @RequestMapping(value = "/calculateInDetail")
@@ -44,7 +43,6 @@ public class DiscounterController {
         } catch (Exception ex) {
             return ex.getMessage();
         }
-
     }
 
     @RequestMapping(value = "/grant")
@@ -73,5 +71,17 @@ public class DiscounterController {
         }
 
         return "Discount Denied.";
+    }
+
+    @RequestMapping(value = "/calculateAverageSales")
+    @ResponseBody
+    public String calculateAverageSales(int customerId){
+        try {
+            Customer customer = _customerDao.getCustomer(customerId);
+            return _discounterDao.averageSales(customer);
+
+        } catch (Exception ex) {
+            return ex.getMessage();
+        }
     }
 }

@@ -94,6 +94,19 @@ public class DiscounterDao {
         }
     }
 
+    public String averageSales(Customer customer){
+        Session session = getSession();
+        Criteria crit = session.createCriteria(Customer.class);
+        List costumers = crit.list();
+        double allSales = 0;
+        int salesCount = 0;
+        for(Object u : costumers){
+            allSales = allSales + ((Customer) u).getSales();
+            salesCount++;
+        }
+        return "Sales Average: "+(allSales/salesCount);
+    }
+
     public double aggregatedSales(){
         Session session = getSession();
         Criteria crit = session.createCriteria(Customer.class);
