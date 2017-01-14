@@ -46,22 +46,22 @@ xhr.onreadystatechange = function() {
     document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
 }*/
 
-document.getElementById('files').addEventListener('change', handleFileSelect, false);
+//document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
 
 
 
 
 function hideSections() {
-    $( "#GetCustomerData" ).hide();
-    $( "#GetAllCustomerData" ).hide();
-    $( "#GetPeergroupData" ).hide();
-    $( "#GetCustomerSales" ).hide();
-    $( "#GetAllCustomersSales" ).hide();
-    $( "#GetPeergroupSales" ).hide();
-    $( "#CalculateDiscountQualification" ).hide();
-    $( "#GrantDiscount" ).hide();
-    $( "#DenyDiscount" ).hide();
+    $( "#GetCustomerDataSection" ).hide();
+    $( "#GetAllCustomerDataSection" ).hide();
+    $( "#GetPeergroupDataSection" ).hide();
+    $( "#GetCustomerSalesSection" ).hide();
+    $( "#GetAllCustomersSalesSection" ).hide();
+    $( "#GetPeergroupSalesSection" ).hide();
+    $( "#CalculateDiscountQualificationSection" ).hide();
+    $( "#GrantDiscountSection" ).hide();
+    $( "#DenyDiscountSection" ).hide();
 }
 
 
@@ -101,32 +101,33 @@ function analyze() {
             taskArray.push(taskName+" ");
 
             if(taskName.includes("Get customer data from database")){
-                $( "#GetCustomerData" ).show();
+                $( "#GetCustomerDataSection" ).show();
             }
             if(taskName.includes("Get data of all customers from database")){
-                $( "#GetAllCustomerData" ).show();
+                $( "#GetAllCustomerDataSection" ).show();
             }
             if(taskName.includes("Get data of peergroup from database")){
-                $( "#GetPeergroupData" ).show();
+                $( "#GetPeergroupDataSection" ).show();
             }
             if(taskName.includes("Calculate customer sales")){
-                $( "#GetCustomerSales" ).show();
+                $( "#GetCustomerSalesSection" ).show();
             }
             if(taskName.includes("Calculate aggregated sales of all customers")){
-                $( "#GetAllCustomersSales" ).show();
+                $( "#GetAllCustomersSalesSection" ).show();
             }
             if(taskName.includes("Calculate aggregated sales of peergroup")){
-                $( "#GetPeergroupSales" ).show();
+                $( "#GetPeergroupSalesSection" ).show();
             }
             if(taskName.includes("Get data of peergroup from database")){
-                $( "#CalculateDiscountQualification" ).show();
+                $( "#CalculateDiscountQualificationSection" ).show();
             }
             if(taskName.includes("Grant discount")){
-                $( "#GrantDiscount" ).show();
+                $( "#GrantDiscountSection" ).show();
             }
             if(taskName.includes("Deny discount")){
-                $( "#DenyDiscount" ).show();
+                $( "#DenyDiscountSection" ).show();
             }
+
             // and to properties not declared in the descriptor with
             taskAttrib = elem.businessObject.$attrs;
             attribArray.pop(taskAttrib);

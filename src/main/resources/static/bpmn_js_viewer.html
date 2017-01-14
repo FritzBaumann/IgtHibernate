@@ -27,87 +27,77 @@
 <button id="analyzeButton" onclick="analyze()">Analyze</button>
 <button id="uploadbpmn" onclick="fileUpload()">Upload</button>
 
-<section class="hidden" id="GetCustomerData">
+<section class="hidden" id="GetCustomerDataSection">
     <h4> Task: Get Customer Data from Database </h4>
-    Get Customer: <a href="http://localhost:8080/customer/get?customerId=1">http://localhost:8080/customer/get?customerId=1</a><br>
-    Get CustomerData: <a href="http://localhost:8080/customer/getData?customerId=1">http://localhost:8080/customer/getData?customerId=1</a><br>
-    Get Customer by Name: <a href="http://localhost:8080/customer/getByName?lastName=Muster&firstName=Max">http://localhost:8080/customer/getByName?lastName=Muster&firstName=Max</a><br>
+    Get Customer: <a href="http://localhost:8080/customer/get?customerId=1">http://localhost:8080/customer/get?customerId=1</a><p id="GetCustomer"></p>
+    Get CustomerData: <a href="http://localhost:8080/customer/getData?customerId=1">http://localhost:8080/customer/getData?customerId=1</a><p id="GetCustomerData"></p>
+    Get Customer by Name: <a href="http://localhost:8080/customer/getByName?lastName=Muster&firstName=Max">http://localhost:8080/customer/getByName?lastName=Muster&firstName=Max</a><p id="GetCustomerByName"></p>
+    Get Customer Name: <a href="http://localhost:8080/customer/getCustomerName?customerId=1">http://localhost:8080/customer/getCustomerName?customerId=1</a><p id="GetCustomerName"></p>
+    Get Customer Birthdate: <a href="http://localhost:8080/customer/getCustomerBirthdate?customerId=1">http://localhost:8080/customer/getCustomerBirthdate?customerId=1</a><p id="GetCustomerBirthdate"></p>
+    Get Customer Address: <a href="http://localhost:8080/customer/getCustomerAddress?customerId=1">http://localhost:8080/customer/getCustomerAddress?customerId=1</a><p id="GetCustomerAddress"></p>
+
     <br>
 </section>
 
-<section class="hidden" id="GetAllCustomerData">
+<section class="hidden" id="GetAllCustomerDataSection">
     <h4> Task: Get Data of All Customers from Database </h4>
-    Get All Customers: <a href="http://localhost:8080/customer/getAll">http://localhost:8080/customer/getAll</a><br>
-    Get Everyone: <a href="http://localhost:8080/customer/getEveryone">http://localhost:8080/customer/getEveryone</a><br>
-    Get Table of all Customers: <a href="http://localhost:8080/customer/getTableOfAllCustomers">http://localhost:8080/customer/getTableOfAllCustomers</a><br>
+    Get All Customers: <a href="http://localhost:8080/customer/getAll">http://localhost:8080/customer/getAll</a><p id="GetAllCustomers"></p>
+    Get Everyone: <a href="http://localhost:8080/customer/getEveryone">http://localhost:8080/customer/getEveryone</a><p id="GetEveryone"></p>
+    Get Table of all Customers: <a href="http://localhost:8080/customer/getTableOfAllCustomers">http://localhost:8080/customer/getTableOfAllCustomers</a><p id="GetTableOfAll"></p>
     <br>
 </section>
 
-<section class="hidden" id="GetPeergroupData">
+<section class="hidden" id="GetPeergroupDataSection">
     <h4> Task: Get Peergroup Data from Database </h4>
-    Get PeerGroup: <a href="http://localhost:8080/customer/getPeerGroup?customerId=1">http://localhost:8080/customer/getPeerGroup?customerId=1</a><br>
-    Get Customers PeerGroup: <a href="http://localhost:8080/customer/PeerGroup?customerId=1">http://localhost:8080/customer/PeerGroup?customerId=1</a><br>
-    Get Table of Peergroup: <a href="http://localhost:8080/customer/PeerGroupTable?customerId=1">http://localhost:8080/customer/PeerGroupTable?customerId=1</a><br>
+    Get PeerGroup: <a href="http://localhost:8080/customer/getPeerGroup?customerId=1">http://localhost:8080/customer/getPeerGroup?customerId=1</a><p id="GetPeergroupData"></p>
+    Get Customers PeerGroup: <a href="http://localhost:8080/customer/PeerGroup?customerId=1">http://localhost:8080/customer/PeerGroup?customerId=1</a><p id="GetPeergroup"></p>
+    Get Table of Peergroup: <a href="http://localhost:8080/customer/PeerGroupTable?customerId=1">http://localhost:8080/customer/PeerGroupTable?customerId=1</a><p id="GetPeergroupTable"></p>
     <br>
 </section>
 
-<section class="hidden" id="GetCustomerSales">
+<section class="hidden" id="GetCustomerSalesSection">
     <h4> Task: Calculate Customer Sales </h4>
-    Calculate Customer Sales: <a href="http://localhost:8080/customer/sales?customerId=1">http://localhost:8080/customer/sales?customerId=1</a><br>
-    Calculcate BusinessVolume of Customer: <a href="http://localhost:8080/customer/businessVolume?customerId=1">http://localhost:8080/customer/businessVolume?customerId=1</a><br>
-    Calculcate SalesByName for Customer: <a href="http://localhost:8080/customer/salesByName?lastName=Muster&firstName=Max">http://localhost:8080/customer/salesByName?lastName=Muster&firstName=Max</a><br>
+    Calculate Customer Sales: <a href="http://localhost:8080/customer/sales?customerId=1">http://localhost:8080/customer/sales?customerId=1</a><p id="CustomerSales"></p>
+    Calculcate BusinessVolume of Customer: <a href="http://localhost:8080/customer/businessVolume?customerId=1">http://localhost:8080/customer/businessVolume?customerId=1</a><p id="BusinessVolume"></p>
+    Calculcate SalesByName for Customer: <a href="http://localhost:8080/customer/salesByName?lastName=Muster&firstName=Max">http://localhost:8080/customer/salesByName?lastName=Muster&firstName=Max</a><p id="SalesByName"></p>
     <br>
 </section>
 
-<section class="hidden" id="GetAllCustomersSales">
+<section class="hidden" id="GetAllCustomersSalesSection">
     <h4> Task: Calculate Sales of All Customers </h4>
-    Get Aggregrated Sales of all Customers: <a href="http://localhost:8080/customer/aggregratedSales">http://localhost:8080/customer/aggregratedSales</a><br>
-    Get SalesTotal of all Customers: <a href="http://localhost:8080/customer/allCustomersSalestotal">http://localhost:8080/customer/allCustomersSalestotal</a><br>
-    Get all Sales: <a href="http://localhost:8080/customer/allSales">http://localhost:8080/customer/allSales</a><br>
+    Get Aggregrated Sales of all Customers: <a href="http://localhost:8080/customer/aggregratedSales">http://localhost:8080/customer/aggregratedSales</a><p id="AggregatedSales"></p>
+    Get SalesTotal of all Customers: <a href="http://localhost:8080/customer/allCustomersSalestotal">http://localhost:8080/customer/allCustomersSalestotal</a><p id="AllSalesTotal"></p>
+    Get all Sales: <a href="http://localhost:8080/customer/allSales">http://localhost:8080/customer/allSales</a><p id="AllSales"></p>
     <br>
 </section>
 
-<section class="hidden" id="GetPeergroupSales">
+<section class="hidden" id="GetPeergroupSalesSection">
     <h4> Task: Calculate Peergroup Sales </h4>
-    Get Aggregated PeerGroup Sales: <a href="http://localhost:8080/customer/aggregratedPeerGroupSales?customerId=1">http://localhost:8080/customer/aggregratedPeerGroupSales?customerId=1</a><br>
-    Get Aggregated PeerGroup Sales in Total: <a href="http://localhost:8080/customer/PeerGroupSalestotal?customerId=1">http://localhost:8080/customer/PeerGroupSalestotal?customerId=1</a><br>
-    Get Peer Sales: <a href="http://localhost:8080/customer//PeerSales?customerId=1">http://localhost:8080/customer//PeerSales?customerId=1</a><br>
+    Get Aggregated PeerGroup Sales: <a href="http://localhost:8080/customer/aggregratedPeerGroupSales?customerId=1">http://localhost:8080/customer/aggregratedPeerGroupSales?customerId=1</a><p id="PeergroupAggregatedSales"></p>
+    Get Aggregated PeerGroup Sales in Total: <a href="http://localhost:8080/customer/PeerGroupSalestotal?customerId=1">http://localhost:8080/customer/PeerGroupSalestotal?customerId=1</a><p id="PeergroupSalesTotal"></p>
+    Get Peer Sales: <a href="http://localhost:8080/customer//PeerSales?customerId=1">http://localhost:8080/customer//PeerSales?customerId=1</a><p id="PeerSales"></p>
     <br>
 </section>
 
-<section class="hidden" id="GrantDiscount">
+<section class="hidden" id="GrantDiscountSection">
     <h4> Task: Grant Discount </h4>
-    Grant Discount: <a href="http://localhost:8080/discount/grant?customerId=1">http://localhost:8080/discount/grant?customerId=1</a><br>
+    Grant Discount: <a href="http://localhost:8080/discount/grant?customerId=1">http://localhost:8080/discount/grant?customerId=1</a><p id="GrantDiscount"></p>
     <br>
 </section>
 
-<section class="hidden" id="DenyDiscount">
+<section class="hidden" id="DenyDiscountSection">
     <h4> Task: Deny Discount </h4>
-    Deny Discount: <a href="http://localhost:8080/discount/deny?customerId=1">http://localhost:8080/discount/deny?customerId=1</a><br>
+    Deny Discount: <a href="http://localhost:8080/discount/deny?customerId=1">http://localhost:8080/discount/deny?customerId=1</a><p id="DenyDiscount"></p>
     <br>
 </section>
 
-<section class="hidden" id="CalculateDiscountQualification">
+<section class="hidden" id="CalculateDiscountQualificationSection">
     <h4> SubTask: Calculate if Customer qualifies for Discount </h4>
-    Calculate Discount: <a href="http://localhost:8080/discount/calculate?customerId=1">http://localhost:8080/discount/calculate?customerId=1</a><br>
-    Calculate Discount in Detail: <a href="http://localhost:8080/discount/calculateInDetail?customerId=1">http://localhost:8080/discount/calculateInDetail?customerId=1</a><br>
+    Calculate Discount: <a href="http://localhost:8080/discount/calculate?customerId=1">http://localhost:8080/discount/calculate?customerId=1</a><p id="CalculateDiscount"></p>
+    Calculate Discount in Detail: <a href="http://localhost:8080/discount/calculateInDetail?customerId=1">http://localhost:8080/discount/calculateInDetail?customerId=1</a><p id="CalculateInDetail"></p>
+    Calculate Average Sales: <a href="http://localhost:8080/discount/calculateAverageSales">http://localhost:8080/discount/calculateAverageSales</a><p id="SalesAverage"></p>
     <br>
 </section>
-
-<section class="hidden" id="GetCustomerAttribute">
-    <h4> Task: Get Customer Attribute </h4>
-    Get Customer Name: <a href="http://localhost:8080/customer/getCustomerName?customerId=1">http://localhost:8080/customer/getCustomerName?customerId=1</a><br>
-    Get Customer Birthdate: <a href="http://localhost:8080/customer/getCustomerBirthdate?customerId=1">http://localhost:8080/customer/getCustomerBirthdate?customerId=1</a><br>
-    Get Customer Address: <a href="http://localhost:8080/customer/getCustomerAddress?customerId=1">http://localhost:8080/customer/getCustomerAddress?customerId=1</a><br>
-    <br>
-</section>
-
-<section class="hidden" id="CalculateAverageSales">
-    <h4> Task: Calculate Average</h4>
-    Calculate Average Sales: <a href="http://localhost:8080/discount/calculateAverageSales">http://localhost:8080/discount/calculateAverageSales</a><br>
-    <br>
-</section>
-
 
 </body>
 </html>
