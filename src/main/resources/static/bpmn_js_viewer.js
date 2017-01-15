@@ -1,7 +1,11 @@
 'use strict';
 
+var serviceEntries = [];
+var minRelevance = 0.5;
+
 window.onload = function() {
-    hideSections();
+    //hideSections();
+    createServiceEntries(serviceEntries);
 };
 
 // we use $.ajax to load the diagram.
@@ -30,27 +34,34 @@ xhr.onreadystatechange = function() {
 };
 
 
-
-
-
-/*function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-
-    // files is a FileList of File objects. List some properties.
-    var output = [];
-    for (var i = 0, f; f = files[i]; i++) {
-        output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-            f.size, ' bytes, last modified: ',
-            f.lastModifiedDate.toLocaleDateString(), '</li>');
-    }
-    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-}*/
-
-//document.getElementById('files').addEventListener('change', handleFileSelect, false);
-
-
-
-
+function createServiceEntries(x) {
+    x.push(new service("Get Customer data from database",              "http://localhost:8080/customer/get?customerId=1"));
+    x.push(new service("Get Customer Data from database",          "http://localhost:8080/customer/getData?customerId=1"));
+    x.push(new service("Get Customer Data from database",      "http://localhost:8080/customer/getByName?lastName=Muster&firstName=Max"));
+    x.push(new service("Get Customer Name from database",         "http://localhost:8080/customer/getCustomerName?customerId=1"));
+    x.push(new service("Get Customer Birthdate from database",    "http://localhost:8080/customer/getCustomerBirthdate?customerId=1"));
+    x.push(new service("Get Customer Address from database",      "http://localhost:8080/customer/getCustomerAddress?customerId=1"));
+    x.push(new service("Get data of all customers from database",         "http://localhost:8080/customer/getAll"));
+    x.push(new service("Get data of all customers from database",              "http://localhost:8080/customer/getEveryone"));
+    x.push(new service("Get table of all customers data from database", "http://localhost:8080/customer/getTableOfAllCustomers"));
+    x.push(new service("Get data of peergroup from database",             "http://localhost:8080/customer/getPeerGroup?customerId=1"));
+    x.push(new service("Get data of peergroup from database",   "http://localhost:8080/customer/PeerGroup?customerId=1"));
+    x.push(new service("Get  table of peergroup data from database",    "http://localhost:8080/customer/PeerGroupTable?customerId=1"));
+    x.push(new service("Calculate customer sales",  "http://localhost:8080/customer/sales?customerId=1"));
+    x.push(new service("Calculate customer sales","http://localhost:8080/customer/businessVolume?customerId=1"));
+    x.push(new service("Calculate customer sales by Name","http://localhost:8080/customer/salesByName?lastName=Muster&firstName=Max"));
+    x.push(new service("Calculate aggregated sales of all customers","http://localhost:8080/customer/aggregratedSales"));
+    x.push(new service("Calculate aggregated sales of all customers","http://localhost:8080/customer/allCustomersSalestotal"));
+    x.push(new service("Calculate aggregated sales of all customers",             "http://localhost:8080/customer/allSales"));
+    x.push(new service("Calculate aggregated sales of peergroup","http://localhost:8080/customer/aggregratedPeerGroupSales?customerId=1"));
+    x.push(new service("Calculate aggregated sales of peergroup","http://localhost:8080/customer/PeerGroupSalestotal?customerId=1"));
+    x.push(new service("Calculate aggregated sales of peergroup",            "http://localhost:8080/customer//PeerSales?customerId=1"));
+    x.push(new service("Grant Discount",            "http://localhost:8080/discount/grant?customerId=1"));
+    x.push(new service("Deny Discount",             "http://localhost:8080/discount/deny?customerId=1"));
+    x.push(new service("Calculate Grant or Deny Discount",        "http://localhost:8080/discount/calculate?customerId=1"));
+    x.push(new service("Calculate Grant or Deny Discount in Detail","http://localhost:8080/discount/calculateInDetail?customerId=1"));
+    x.push(new service("Calculate Average customer sales",   "http://localhost:8080/discount/calculateAverageSales"));
+}
 
 function hideSections() {
     $( "#GetCustomerDataSection" ).hide();
@@ -64,6 +75,11 @@ function hideSections() {
     $( "#DenyDiscountSection" ).hide();
 }
 
+
+function service(name, url){
+    return {name : name,
+    url : url}
+}
 
 function fileUpload(){
     var x = document.getElementById("files");
@@ -98,35 +114,10 @@ function analyze() {
 
             // and access to properties declared in the descriptor with
             taskName = elem.businessObject.get('name');
+            addTask(taskName);
             taskArray.push(taskName+" ");
 
-            if(taskName.includes("Get customer data from database")){
-                $( "#GetCustomerDataSection" ).show();
-            }
-            if(taskName.includes("Get data of all customers from database")){
-                $( "#GetAllCustomerDataSection" ).show();
-            }
-            if(taskName.includes("Get data of peergroup from database")){
-                $( "#GetPeergroupDataSection" ).show();
-            }
-            if(taskName.includes("Calculate customer sales")){
-                $( "#GetCustomerSalesSection" ).show();
-            }
-            if(taskName.includes("Calculate aggregated sales of all customers")){
-                $( "#GetAllCustomersSalesSection" ).show();
-            }
-            if(taskName.includes("Calculate aggregated sales of peergroup")){
-                $( "#GetPeergroupSalesSection" ).show();
-            }
-            if(taskName.includes("Get data of peergroup from database")){
-                $( "#CalculateDiscountQualificationSection" ).show();
-            }
-            if(taskName.includes("Grant discount")){
-                $( "#GrantDiscountSection" ).show();
-            }
-            if(taskName.includes("Deny discount")){
-                $( "#DenyDiscountSection" ).show();
-            }
+
 
             // and to properties not declared in the descriptor with
             taskAttrib = elem.businessObject.$attrs;
@@ -134,10 +125,47 @@ function analyze() {
         }
     });
 
-/*// Print out Tasks
-    for(var i=0; i< taskArray.length; i++){
-        taskName += taskArray[i]+" ";
-    }
-     document.getElementById("taskNameField").innerHTML = taskName;*/
 
+}
+
+function addTask(task){
+    //alert("debug 1");
+    var services = getServices(task);
+    var servicesHTML = generateHTML(services);
+    var taskDiv = "<div><br /><br />"+task +"<br /> Services: <br />" +servicesHTML;
+    document.getElementById("container").insertAdjacentHTML('beforeend', taskDiv);
+}
+
+function getServices(task){
+    var relevantServices = [];
+    for(var z = 0;z< serviceEntries.length;z++){
+        var matches = 0;
+        var splitName = serviceEntries[z].name.toLowerCase().split(" ");
+        var splitTask  = task.toLowerCase().split(" ");
+        for(var a = 0; a < splitTask.length;a++){
+            if(splitName.includes(splitTask[a])){
+                matches++;
+            }
+        }
+        //(matches);
+        var relevance = matches/(splitTask.length);
+        if(relevance>=minRelevance){
+            relevantServices.push(serviceEntries[z]);
+        }
+    }
+    return relevantServices;
+
+}
+
+function generateHTML(serviceList){
+    //alert(serviceList.length);
+    var precision = (serviceList.length)/(serviceEntries.length);
+    var recall;
+    var fmeasure;
+    var html = "";
+    for(var service = 0; service < serviceList.length;service++){
+        html = html + "" + serviceList[service].name + ":  <a href=" + serviceList[service].url+ "> "+ serviceList[service].url +"</a> precision: " + precision;
+        html = html + " <br />";
+    }
+    return html;
 }
